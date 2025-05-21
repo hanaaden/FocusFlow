@@ -17,6 +17,7 @@ import JournalEntry from "./page/JournalEntry";
 import JournalCreate from "./page/JournalCreate";
 import JournalEdit from "./page/JournalEdit";
 
+
 // To-Do Pages
 import ToDoOverview from "./page/ToDoOverview";
 import ToDoList from "./page/ToDoList";
@@ -45,8 +46,8 @@ const App = () => {
         <Route path="/journal/edit/:id" element={<JournalEdit />} />
 
         {/* 📋 To-Do */}
-        <Route path="/todos" element={<ToDoOverview />} />
-        <Route path="/todo/:date" element={<ToDoList />} />
+        <Route path="/todos/:id" element={<ToDoOverview />} />
+        <Route path="/todo" element={<ToDoList />} />
         <Route path="/todo/create" element={<ToDoCreate />} />
         <Route path="/todo/edit/:id" element={<ToDoEdit />} />
       </Routes>
