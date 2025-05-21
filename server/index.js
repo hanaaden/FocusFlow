@@ -142,6 +142,16 @@ app.get('/todos', verifyUser, (req, res) => {
         .then(todos => res.json(todos))
         .catch(err => res.status(500).json(err));
 });
+// Correct GET single ToDo by id to update
+app.get('/todos/:id', verifyUser, (req, res) => {
+    ToDoModel.findOne({ _id: req.params.id, userId: req.userId })
+        .then(todo => {
+            if (!todo) return res.status(404).json("ToDo not found");
+            res.json(todo);
+        })
+        .catch(err => res.status(500).json(err));
+});
+
 
 
 // Edit To-Do List

@@ -20,7 +20,7 @@ export default function Sidebar() {
           <Link to="/dashboard" className="sidebar-link" onClick={() => setIsSidebarOpen(false)}>
             <i className="fas fa-folder"></i> Dashboard
           </Link>
-          <Link to="/todos" className="sidebar-link" onClick={() => setIsSidebarOpen(false)}>
+          <Link to="/todo" className="sidebar-link" onClick={() => setIsSidebarOpen(false)}>
             <i className="fas fa-tasks"></i> To Do Lists
           </Link>
           <Link to="/journals" className="sidebar-link" onClick={() => setIsSidebarOpen(false)}>

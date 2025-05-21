@@ -1,66 +1,61 @@
 /* Container inherits main container styles, with some tweaks */
-.todo-create-container {
-  max-width: 480px;
-  background: #2D142E;
-  padding: 30px 25px;
-  border-radius: 10px;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  box-shadow: 0 8px 24px rgb(45 20 46 / 0.3);
-  margin: auto;
-  margin-top: 100px; /* align with dashboard padding top */
-}
+.main{
+  width: calc(100% - 100px);
 
-/* Page title */
+}/* Page title */
 .page-title {
   font-weight: 700;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-top:0;
+  padding-top: 0;
+  margin-bottom: 24px;
+  color: #2d142e;
   text-align: center;
-  color: #fff;
 }
 
 /* Form base */
 .todo-create-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  background-color: #2d142e;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Labels */
 .form-label {
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1rem;
+  margin-bottom: 6px;
   color: #f0e6f7;
-  display: block;
 }
 
 /* Inputs */
 .form-input {
   width: 100%;
-  padding: 10px 15px;
-  border-radius: 6px;
+  padding: 12px 16px;
+  border-radius: 8px;
   border: none;
-  background-color: #693B69; /* dark purple */
-  color: white;
   font-size: 1rem;
   font-weight: 500;
   outline: none;
-  transition: background-color 0.2s ease;
+  transition: box-shadow 0.2s ease;
+  
 }
 
 .form-input:focus {
-  background-color: #7e4d7e;
-  box-shadow: 0 0 5px 1px #9e70a8;
+   
+  box-shadow: 0 0 0 3px rgba(158, 112, 168, 0.5);
 }
 
-/* Task input wrapper for spacing */
+/* Task input wrapper */  
 .task-input-wrapper {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-/* Smaller input for tasks but consistent */
+/* Smaller task input */
 .task-input {
   font-size: 0.95rem;
 }
@@ -70,9 +65,9 @@
   align-self: flex-start;
   background-color: #693B69;
   color: white;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 6px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -87,21 +82,21 @@
 .form-error {
   color: #ff6b6b;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 
 /* Save button */
 .save-btn {
-  background-color: #2D142E;
+  background-color: #80568a !important;
   color: white;
   font-weight: 700;
-  font-size: 1.1rem;
-  padding: 12px 0;
-  border-radius: 8px;
+  font-size: 1rem;
+  padding: 14px 0;
+  border-radius: 10px;
   border: 2px solid #693B69;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
   user-select: none;
 }
 
@@ -112,14 +107,22 @@
 }
 
 .save-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* Responsive */
-@media (max-width: 480px) {
-  .todo-create-container {
-    margin-top: 60px;
-    padding: 20px 15px;
+@media (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+
+  .todo-create-form {
+    padding: 16px;
   }
 }
+
+
+
+
+

@@ -54,11 +54,26 @@ const TodoDiv = () => {
   };
 
   return (
-    <div>
+   
       
         <div className="todo-card">
           <div className="todo-header">
-            <div className="header-text">{latestTodo?.title || "No To-Do List Yet"}</div>
+ <div className="header-text">
+                  <Link
+                to={`/todo/edit/${latestTodo?._id}`}
+                className="header-text"
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#2D142E")}
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+           {latestTodo?.title || "No To-Do List Yet"}
+              </Link>
+           </div>
           </div>
 
           <div className="task-section">
@@ -119,7 +134,7 @@ const TodoDiv = () => {
           </div>
         </div>
   
-    </div>
+  
   );
 };
 

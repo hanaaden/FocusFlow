@@ -299,6 +299,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "./Header";
+import Sidebar from "./sidebar";
 import "./ToDoCreate.css";
 
 const ToDoCreate = () => {
@@ -341,7 +343,7 @@ const ToDoCreate = () => {
       );
 
       console.log("To-Do Created:", response.data);
-      navigate("/todos");
+      navigate("/todo");
     } catch (err) {
       console.error("Failed to create to-do:", err);
       setError("Failed to create to-do. Please try again.");
@@ -351,8 +353,13 @@ const ToDoCreate = () => {
   };
 
   return (
-    <div className="main-container todo-create-container">
-      <h1 className="page-title">Create New To-Do List</h1>
+   <div>
+    <Sidebar />
+     <div className="main-container ">
+        <Header />
+        
+      <div className="main">
+        <h1 className="page-title">Create New To-Do List</h1>
       <form className="todo-create-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title" className="form-label">Title</label>
@@ -401,7 +408,9 @@ const ToDoCreate = () => {
           {loading ? "Saving..." : "Save To-Do List"}
         </button>
       </form>
+      </div>
     </div>
+   </div>
   );
 };
 

@@ -55,15 +55,64 @@
 //   );
 // };
 
+// // export default JournalDashboard;
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
+// import "./Dashboard.css"
+
+// const JournalDashboard = () => {
+//   const [latestJournal, setLatestJournal] = useState(null);
+//   const api = "http://localhost:5000"; // Change to your API base URL
+
+//   useEffect(() => {
+//     axios
+//       .get(`${api}/journals`, { withCredentials: true })
+//       .then((res) => {
+//         const sorted = res.data.sort(
+//           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+//         );
+//         setLatestJournal(sorted[0] || null);
+//       })
+//       .catch((err) => {
+//         console.error("Failed to fetch journals:", err);
+//       });
+//   }, []);
+
+//   return (
+//     <div className="journal-card">
+//       <Link to="/journals" className="journal-link">
+       
+//           <div className="journal-header">
+//             {latestJournal?.title || "No Journal Entries Yet"}
+//           </div>
+
+//           <div className="journal-content">
+//             {latestJournal?.content ? (
+//               latestJournal.content
+//             ) : (
+//               <div className="journal-placeholder">
+//                 <i className="fas fa-plus placeholder-icon"></i>
+//               </div>
+//             )}
+//           </div>
+       
+//       </Link>
+//     </div>
+//   );
+// };
+
 // export default JournalDashboard;
+
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./Dashboard.css"
+import "./Dashboard.css";
 
 const JournalDashboard = () => {
   const [latestJournal, setLatestJournal] = useState(null);
-  const api = "http://localhost:5000"; // Change to your API base URL
+  const api = "http://localhost:5000"; // Replace with your backend URL
 
   useEffect(() => {
     axios
@@ -80,24 +129,23 @@ const JournalDashboard = () => {
   }, []);
 
   return (
-    <div>
-      <Link to="/journals" className="journal-link">
-        <div className="journal-card">
-          <div className="journal-header">
-            {latestJournal?.title || "No Journal Entries Yet"}
-          </div>
+    <div className="journal-card">
+      <div className="journal-header">
+        {latestJournal?.title || "No Journal Entries Yet"}
+      </div>
 
-          <div className="journal-content">
-            {latestJournal?.content ? (
-              latestJournal.content
-            ) : (
-              <div className="journal-placeholder">
-                <i className="fas fa-plus placeholder-icon"></i>
-              </div>
-            )}
+      <div className="journal-content">
+        {latestJournal?.content ? (
+          latestJournal.content
+        ) : (
+          <div className="journal-placeholder">
+            <Link to="/journals">
+              <i className="fas fa-plus placeholder-icon"></i>
+            </Link>
+            <p style={{ marginTop: "10px" }}>Add your first journal entry</p>
           </div>
-        </div>
-      </Link>
+        )}
+      </div>
     </div>
   );
 };
