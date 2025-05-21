@@ -9,6 +9,7 @@
   top: 0;
   z-index: 999;
 width: calc(100% - 200px);
+align-content: center;
 }
 
 .header-left .user-name {
@@ -24,9 +25,12 @@ width: calc(100% - 200px);
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .custom-header {
     padding: 12px 15px;
+    width: 100%;
+ 
+
   }
 
   .header-left .user-name {

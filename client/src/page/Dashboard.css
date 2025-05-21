@@ -14,16 +14,193 @@
   overflow-y: auto;
   margin-left: 200px; 
  width: calc(100% - 200px);
+ padding-top: 100px;
   
 }
-
+.main-contact{
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
 @media (max-width: 768px) {
   .main-container {
     margin-left: 0;
+
   }
+  .main-contact{
+ 
+  flex-wrap: wrap;
+}
 
   .sidebar {
     position: fixed;
     z-index: 40;
   }
+}
+
+
+
+
+
+
+
+
+
+
+/* todolist card in dashboard */
+
+.todo-card {
+  width: 458px;
+  height: 300px;
+  padding: 10px 15px;
+  background: #2D142E;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.todo-header {
+  align-self: stretch;
+  padding: 10px;
+  background: #693B69;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-text {
+  flex: 1;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.task-section {
+  align-self: stretch;
+  height: 200px;
+  padding: 15px 10px;
+  background: #693B69;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.task-title {
+  color: white;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  align-self: stretch;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.checkbox-inner {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: white;
+}
+
+.task-text {
+  color: white;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+
+
+
+
+
+
+
+
+/* journal dashboard css */
+.journal-link {
+  font-weight: bold;
+  color: #2D142E;
+  text-decoration: none;
+}
+
+.journal-card {
+   width: 458px;
+  height: 300px;
+  padding: 10px 15px;
+  background: #2D142E;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #693B69;
+ 
+}
+
+.journal-header {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #2D142E;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  align-self: stretch;
+}
+
+.journal-content {
+  height: 200px;
+  color: #fff;
+  white-space: pre-wrap;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  background-color: #2D142E;
+  border-radius: 5px;
+  padding: 10px 15px ;
+  overflow-y: auto;
+  align-self: stretch;
+}
+
+.journal-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #888;
+  font-style: italic;
+  height: 100px;
+  overflow-y: auto;
+  
+}
+
+.placeholder-icon {
+  font-size: 48px;
+  color: #fff;
 }

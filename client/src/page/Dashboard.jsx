@@ -1,10 +1,14 @@
-// src/page/Dashboard.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import Header from "./Header";
 import Sidebar from "./sidebar";
-
+import TodoDiv from "./TodoDashboard";
+import JournalDashboard from "./JournalDashboard";
 const Dashboard = () => {
+
+
   return (
     <>
      <div className="layout">
@@ -12,9 +16,17 @@ const Dashboard = () => {
      
       <div className="main-container">
         <Header />
-        <h1 className="page-title">Welcome Back!</h1>
-      </div>
+         <div className="main-contact">
+           <TodoDiv />
+          <JournalDashboard />
+         </div>
+     
+   
+        </div>
+    
+      
     </div>
+    
     </>
   );
 };

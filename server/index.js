@@ -12,8 +12,8 @@ require('dotenv').config();
 
 // Middleware setup
 app.use(cors({
-    origin: 'http://localhost:5173/',  // Replace with your frontend URL
-    methods: ['GET', 'POST','UPDATE','DELETE'],
+    origin: 'http://localhost:5173',  // Replace with your frontend URL
+    methods: ['GET', 'POST','PUT','DELETE'],
     credentials: true,
 }));
 app.use(express.json());
@@ -93,6 +93,7 @@ app.post('/journals', verifyUser, (req, res) => {
         title,
         content
     });
+    
 
     newJournal.save()
         .then(() => res.json("Journal entry created successfully"))
@@ -141,6 +142,7 @@ app.get('/todos', verifyUser, (req, res) => {
         .then(todos => res.json(todos))
         .catch(err => res.status(500).json(err));
 });
+
 
 // Edit To-Do List
 app.put('/todos/:id', verifyUser, (req, res) => {

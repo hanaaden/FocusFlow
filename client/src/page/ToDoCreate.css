@@ -1,66 +1,125 @@
-/* src/page/ToDoCreate.css */
-
-/* .main-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
+/* Container inherits main container styles, with some tweaks */
+.todo-create-container {
+  max-width: 480px;
+  background: #2D142E;
+  padding: 30px 25px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-} */
-
-.page-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 8px 24px rgb(45 20 46 / 0.3);
+  margin: auto;
+  margin-top: 100px; /* align with dashboard padding top */
 }
 
-form {
+/* Page title */
+.page-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Form base */
+.todo-create-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-label {
-  font-size: 1.1rem;
+/* Labels */
+.form-label {
   font-weight: 600;
-}
-
-input {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-top: 5px;
-  width: 100%;
-}
-
-button.add-task-btn {
-  padding: 8px 15px;
-  background-color: #ff8c00;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
-}
-
-button.add-task-btn:hover {
-  background-color: #e07b00;
-}
-
-button.save-btn {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
   font-size: 1.1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  margin-bottom: 8px;
+  color: #f0e6f7;
+  display: block;
 }
 
-button.save-btn:hover {
-  background-color: #45a049;
+/* Inputs */
+.form-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: #693B69; /* dark purple */
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.form-input:focus {
+  background-color: #7e4d7e;
+  box-shadow: 0 0 5px 1px #9e70a8;
+}
+
+/* Task input wrapper for spacing */
+.task-input-wrapper {
+  margin-bottom: 12px;
+}
+
+/* Smaller input for tasks but consistent */
+.task-input {
+  font-size: 0.95rem;
+}
+
+/* Add Task button */
+.btn-add-task {
+  align-self: flex-start;
+  background-color: #693B69;
+  color: white;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-add-task:hover:not(:disabled) {
+  background-color: #80568a;
+}
+
+/* Error message styling */
+.form-error {
+  color: #ff6b6b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Save button */
+.save-btn {
+  background-color: #2D142E;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 0;
+  border-radius: 8px;
+  border: 2px solid #693B69;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #693B69;
+  border-color: #2D142E;
+  color: white;
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .todo-create-container {
+    margin-top: 60px;
+    padding: 20px 15px;
+  }
 }
