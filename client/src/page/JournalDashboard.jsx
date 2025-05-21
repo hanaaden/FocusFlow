@@ -131,15 +131,30 @@ const JournalDashboard = () => {
   return (
     <div className="journal-card">
       <div className="journal-header">
-        {latestJournal?.title || "No Journal Entries Yet"}
+
+          <Link
+                        to={`/journal/edit/${latestJournal?._id}`}
+                        className="header-text"
+                        style={{
+                          textDecoration: "none",
+                          color: "#fff",
+                          fontWeight: "bold",
+                          transition: "color 0.3s",
+                        }}
+                        onMouseOver={(e) => (e.target.style.color = "#511f54")}
+                        onMouseOut={(e) => (e.target.style.color = "#fff")}
+                      >
+                      {latestJournal?.title || "No Journal Entries Yet"}
+                      </Link>
+     
       </div>
 
-      <div className="journal-content">
+      <div className="journal-content" style={{color:"white"}}>
         {latestJournal?.content ? (
           latestJournal.content
         ) : (
           <div className="journal-placeholder">
-            <Link to="/journals">
+            <Link to="/journal/create">
               <i className="fas fa-plus placeholder-icon"></i>
             </Link>
             <p style={{ marginTop: "10px" }}>Add your first journal entry</p>

@@ -106,7 +106,17 @@ app.get('/journals', verifyUser, (req, res) => {
         .then(journals => res.json(journals))
         .catch(err => res.status(500).json(err));
 });
-
+// Get a Single Journal Entry by ID (for logged-in user)
+app.get('/journals/:id', verifyUser, (req, res) => {
+  JournalModel.findOne({ _id: req.params.id, userId: req.userId })
+    .then(journal => {
+      if (!journal) {
+        return res.status(404).json({ error: "Journal entry not found" });
+      }
+      res.json(journal);
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+});
 // Edit Journal Entry
 app.put('/journals/:id', verifyUser, (req, res) => {
     const { title, content } = req.body;
