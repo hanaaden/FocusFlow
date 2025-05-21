@@ -1,0 +1,42 @@
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d142e;
+  margin-top: 40px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+    

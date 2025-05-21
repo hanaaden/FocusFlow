@@ -1,0 +1,16 @@
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d142e;
+  margin-top: 40px;
+}
+
+.profile-info {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.profile-info p {
+  margin-bottom: 10px;
+}

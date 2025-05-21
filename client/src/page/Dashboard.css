@@ -1,0 +1,35 @@
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d142e;
+  margin-top: 40px;
+}
+
+.dashboard-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.card {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #511f54;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+}
+
+.card h2 {
+  font-size: 18px;
+  color: #511f54;
+  margin-bottom: 10px;
+}
+
+.progress-placeholder {
+  height: 150px;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
