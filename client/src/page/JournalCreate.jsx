@@ -98,7 +98,7 @@ const JournalCreate = () => {
         <Header />
         <div className="main">
           <h1 className="page-title">Create New Journal Entry</h1>
-          <form className="journal-create-form" onSubmit={handleSubmit}>
+          <form className="journal-create-form" onSubmit={handleSubmit}  >
             <div className="form-group">
               <label htmlFor="title" className="form-label" style={{color:"#2d142e"}}>
                 Title
@@ -111,6 +111,7 @@ const JournalCreate = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter journal title"
                 required
+                style={{border:"2px solid #2d142e"}}
                 disabled={loading}
               />
             </div>
@@ -127,6 +128,7 @@ const JournalCreate = () => {
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Write your journal content here..."
                 required
+                style={{border:"2px solid #2d142e"}}
                 disabled={loading}
               ></textarea>
             </div>
@@ -137,8 +139,9 @@ const JournalCreate = () => {
               type="submit"
               className="save-btn"
               disabled={loading}
+              style={{padding:"10px", marginTop:"10px"}}
             >
-              {loading ? "Saving..." : "Save Journal Entry"}
+              {loading ? "Saving..." : "Save Journal"}
             </button>
           </form>
         </div>

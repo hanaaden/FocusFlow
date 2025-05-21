@@ -101,4 +101,16 @@
 .journal-link:focus-visible {
   outline: 3px solid #6c63ff;
   outline-offset: 3px;
+
+}
+
+@media screen and (max-width: 768px) {
+  .journal-main-container {
+ width: 100%;}
+ .journal-item-header {
+  display: block;}
+
+  .journal-page-title {
+  font-size: 1.5rem;}
+  
 }

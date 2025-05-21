@@ -102,3 +102,11 @@ color: white !important;
 .journal-edit-form textarea:invalid {
   border-color: #e63946;
 }
+
+
+@media screen and (max-width: 768px) {
+.journal-edit-container {
+  width: 100%
+
+}
+}
