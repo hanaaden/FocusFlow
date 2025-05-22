@@ -48,6 +48,8 @@ const verifyUser = (req, res, next) => {
             return res.status(401).json("The token is invalid");
         }
         req.userId = decoded.userId;
+        // added role to diff the dashbaords
+        req.role = decoded.role; 
         next();
     });
 };
@@ -72,13 +74,15 @@ app.post('/login', (req, res) => {
             if (!user) return res.status(400).json("User not found");
             bcrypt.compare(password, user.password, (err, match) => {
                 if (match) {
-                    const token = jwt.sign({ userId: user._id, email: user.email, username: user.username }, "jwt-secret-key", 
+                  // added role
+                    const token = jwt.sign({ userId: user._id, email: user.email, username: user.username, role:user.role }, "jwt-secret-key", 
                         // add experied date
                           { expiresIn: "7d" });
                     res.cookie("token", token, { httpOnly: true, 
                         maxAge: 7 * 24 * 60 * 60 * 1000,// 7 days in milliseconds here also
                          });
-                   res.json({ token });
+                        //  added user role
+                  res.json({ token, role: user.role });
                 } else {
                     res.status(400).json("Incorrect password");
                 }
@@ -190,4 +194,123 @@ app.delete('/todos/:id', verifyUser, (req, res) => {
     ToDoModel.findOneAndDelete({ _id: req.params.id, userId: req.userId })
         .then(() => res.json("To-Do list deleted"))
         .catch(err => res.status(500).json(err));
+});
+
+
+
+
+
+
+
+
+
+
+// Get all users (for admin use only, can add verifyUser + role check middleware later)
+app.get('/users', async (req, res) => {
+  try {
+    const users = await UserModel.find().select('-password'); // exclude password
+    res.json(users);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Get single user by ID
+app.get('/users/:id', async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id).select('-password');
+    if (!user) return res.status(404).json("User not found");
+    res.json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+// Update user by ID (you can also allow partial updates)
+app.put('/users/:id', async (req, res) => {
+  const { username, email, password, role } = req.body;
+  try {
+    const updateData = { username, email, role };
+    if (password) {
+      updateData.password = await bcrypt.hash(password, 10);
+    }
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    ).select('-password');
+
+    if (!updatedUser) return res.status(404).json("User not found");
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Delete user by ID
+app.delete('/users/:id', async (req, res) => {
+  try {
+    const deletedUser = await UserModel.findByIdAndDelete(req.params.id);
+    if (!deletedUser) return res.status(404).json("User not found");
+    res.json("User deleted successfully");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Change Password (must be logged in)
+app.put('/change-password', verifyUser, async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  try {
+    // Find user by ID from JWT
+    const user = await UserModel.findById(req.userId);
+    if (!user) return res.status(404).json("User not found");
+
+    // Compare current password
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) return res.status(400).json("Current password is incorrect");
+
+    // Hash new password and update
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedNewPassword;
+    await user.save();
+
+    res.json("Password changed successfully");
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
+
+
+// for profile
+app.get('/me', verifyUser, async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.userId).select('-password');
+    if (!user) return res.status(404).json("User not found");
+    res.json(user);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
+
+app.put('/me', verifyUser, async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const updateData = {};
+    if (username) updateData.username = username;
+    if (password) updateData.password = await bcrypt.hash(password, 10);
+
+    const updatedUser = await UserModel.findByIdAndUpdate(req.userId, updateData, { new: true }).select('-password');
+    if (!updatedUser) return res.status(404).json("User not found");
+
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
 });

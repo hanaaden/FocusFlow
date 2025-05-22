@@ -5,7 +5,7 @@ import "./index.css";
 
 export default function WelcomePage() {
   return (
-    <div className="main-container">
+    <div className="main-container-home">
       <div className="nav">
         <div className="container">
           <div className="icon-logo">
@@ -18,7 +18,7 @@ export default function WelcomePage() {
               </Link>
             </div>
             <div className="signin">
-              <Link to="/signin" className="signin-btn">
+              <Link to="/signin" className="signin-btn" style={{color:"white"}}>
                 SignIn
               </Link>
             </div>
@@ -39,7 +39,7 @@ export default function WelcomePage() {
               <div className="signup-4">
                 <div className="frame-5" />
                 <span className="get-started-free">
-                  Get Started – It’s Free
+                  <Link to="/signup" style={{color:"white"}}>Get Started – It’s Free</Link>
                 </span>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function WelcomePage() {
             </span>
             <div className="signup-f">
               <span className="start-journaling-today">
-                Start Journaling Today
+               <Link to="signup"> Start Journaling Today</Link>
               </span>
             </div>
           </div>

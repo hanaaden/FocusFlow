@@ -22,6 +22,9 @@ const SignInPage = () => {
 
      if (res.data.token) {
   localStorage.setItem("token", res.data.token);
+  localStorage.setItem("role", res.data.role);
+
+
   navigate("/dashboard");
 }
  else {

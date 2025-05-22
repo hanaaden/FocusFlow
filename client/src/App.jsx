@@ -11,6 +11,12 @@ import SignInPage from "./page/SignInPage";
 import Dashboard from "./page/Dashboard";
 import Profile from "./page/Profile";
 
+//users
+import UsersPage from "./page/UserPage";
+import UserEditPage from "./page/UserEditPage";
+import UserCreatePage from "./page/UserCreatePage";
+
+
 // Journal Pages
 import JournalList from "./page/JournalList";
 import JournalEntry from "./page/JournalEntry";
@@ -23,11 +29,15 @@ import ToDoOverview from "./page/ToDoOverview";
 import ToDoList from "./page/ToDoList";
 import ToDoCreate from "./page/ToDoCreate";
 import ToDoEdit from "./page/ToDoEdit";
-import ProtectedRoute from "./page/ProtectedRoute";
+
 
 
 
 // protected routes
+import ProtectedRoute from "./page/ProtectedRoute";
+
+
+
 
 const App = () => {
   return (
@@ -39,9 +49,13 @@ const App = () => {
         <Route path="/signin" element={<SignInPage />} />
 
 
-
+{/* added protected routes for each to stop unauth persons */}
         {/* 🟡 Dashboard */}
         <Route path="/dashboard" element={  <ProtectedRoute ><Dashboard /> </ProtectedRoute>} />
+        {/* users  */}
+        <Route path="/users" element={  <ProtectedRoute ><UsersPage /> </ProtectedRoute>} />
+        <Route path="/users/new" element={  <ProtectedRoute ><UserCreatePage /> </ProtectedRoute>} />
+        <Route path="/users/:id/edit" element={  <ProtectedRoute ><UserEditPage /> </ProtectedRoute>} />
 
         {/* 🟢 Profile */}
         <Route path="/profile" element={<Profile />} />
@@ -58,6 +72,9 @@ const App = () => {
         <Route path="/todo" element={ <ProtectedRoute> <ToDoList /> </ProtectedRoute>} />
         <Route path="/todo/create" element={ <ProtectedRoute> <ToDoCreate /> </ProtectedRoute>} />
         <Route path="/todo/edit/:id" element={ <ProtectedRoute> <ToDoEdit /> </ProtectedRoute>} />
+
+        {/* profile */}
+        <Route path="/profile" element={ <ProtectedRoute> <Profile /> </ProtectedRoute>} />
 
        
       </Routes>
