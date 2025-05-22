@@ -41,6 +41,10 @@ const verifyUser = (req, res, next) => {
     }
     jwt.verify(token, "jwt-secret-key", (err, decoded) => {
         if (err) {
+            //added another contion to check if token experied
+            if (err.name === "TokenExpiredError") {
+                return res.status(401).json("Token has expired");
+            }
             return res.status(401).json("The token is invalid");
         }
         req.userId = decoded.userId;
@@ -68,9 +72,13 @@ app.post('/login', (req, res) => {
             if (!user) return res.status(400).json("User not found");
             bcrypt.compare(password, user.password, (err, match) => {
                 if (match) {
-                    const token = jwt.sign({ userId: user._id, email: user.email, username: user.username }, "jwt-secret-key");
-                    res.cookie("token", token, { httpOnly: true });
-                    res.json("success");
+                    const token = jwt.sign({ userId: user._id, email: user.email, username: user.username }, "jwt-secret-key", 
+                        // add experied date
+                          { expiresIn: "7d" });
+                    res.cookie("token", token, { httpOnly: true, 
+                        maxAge: 7 * 24 * 60 * 60 * 1000,// 7 days in milliseconds here also
+                         });
+                   res.json({ token });
                 } else {
                     res.status(400).json("Incorrect password");
                 }
@@ -81,8 +89,13 @@ app.post('/login', (req, res) => {
 
 // Logout
 app.get('/logout', (req, res) => {
-    res.clearCookie('token');
-    return res.json("success");
+    //added time coz i added the when i setting token to have 7 dyas
+  res.clearCookie('token', { 
+    httpOnly: true, 
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    
+  });
+  res.json({ message: "Logged out successfully" });
 });
 
 // Create Journal Entry
@@ -106,7 +119,7 @@ app.get('/journals', verifyUser, (req, res) => {
         .then(journals => res.json(journals))
         .catch(err => res.status(500).json(err));
 });
-// Get a Single Journal Entry by ID (for logged-in user)
+// added Get a Single Journal Entry by ID (for logged-in user)  for edit page
 app.get('/journals/:id', verifyUser, (req, res) => {
   JournalModel.findOne({ _id: req.params.id, userId: req.userId })
     .then(journal => {
@@ -152,7 +165,7 @@ app.get('/todos', verifyUser, (req, res) => {
         .then(todos => res.json(todos))
         .catch(err => res.status(500).json(err));
 });
-// Correct GET single ToDo by id to update
+// added  GET single ToDo by id to update for edit page
 app.get('/todos/:id', verifyUser, (req, res) => {
     ToDoModel.findOne({ _id: req.params.id, userId: req.userId })
         .then(todo => {

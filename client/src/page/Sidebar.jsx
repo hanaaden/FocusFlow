@@ -1,10 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
+import axios from "axios";
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+const navigate = useNavigate();
+    const handleLogout = async () => {
+    try {
+      await axios.get("http://localhost:5000/logout", {
+        withCredentials: true, // send cookie
+      });
+      localStorage.removeItem("token");
+      
+      navigate("/signin");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
   return (
     <>
       <button className="sidebar-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
@@ -26,7 +39,7 @@ export default function Sidebar() {
           <Link to="/journals" className="sidebar-link" onClick={() => setIsSidebarOpen(false)}>
             <i className="fas fa-edit"></i> Journals
           </Link>
-          <Link to="/signin" className="sidebar-link" onClick={() => setIsSidebarOpen(false)}>
+          <Link  className="sidebar-link" onClick={handleLogout}>
             <i className="fas fa-sign-out-alt"></i> Logout
           </Link>
         </nav>

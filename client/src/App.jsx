@@ -23,6 +23,11 @@ import ToDoOverview from "./page/ToDoOverview";
 import ToDoList from "./page/ToDoList";
 import ToDoCreate from "./page/ToDoCreate";
 import ToDoEdit from "./page/ToDoEdit";
+import ProtectedRoute from "./page/ProtectedRoute";
+
+
+
+// protected routes
 
 const App = () => {
   return (
@@ -33,23 +38,28 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SignInPage />} />
 
+
+
         {/* 🟡 Dashboard */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={  <ProtectedRoute ><Dashboard /> </ProtectedRoute>} />
 
         {/* 🟢 Profile */}
         <Route path="/profile" element={<Profile />} />
 
         {/* 📓 Journal */}
-        <Route path="/journals" element={<JournalList />} />
-        <Route path="/journal/:id" element={<JournalEntry />} />
-        <Route path="/journal/create" element={<JournalCreate />} />
-        <Route path="/journal/edit/:id" element={<JournalEdit />} />
+        <Route path="/journals" element={<ProtectedRoute ><JournalList /> </ProtectedRoute>
+          } />
+        <Route path="/journal/:id" element={ <ProtectedRoute><JournalEntry /> </ProtectedRoute>} />
+        <Route path="/journal/create" element={ <ProtectedRoute> <JournalCreate /> </ProtectedRoute>} />
+        <Route path="/journal/edit/:id" element={ <ProtectedRoute> <JournalEdit /> </ProtectedRoute>} />
 
         {/* 📋 To-Do */}
-        <Route path="/todos/:id" element={<ToDoOverview />} />
-        <Route path="/todo" element={<ToDoList />} />
-        <Route path="/todo/create" element={<ToDoCreate />} />
-        <Route path="/todo/edit/:id" element={<ToDoEdit />} />
+        <Route path="/todos/:id" element={ <ProtectedRoute> <ToDoOverview /> </ProtectedRoute>} />
+        <Route path="/todo" element={ <ProtectedRoute> <ToDoList /> </ProtectedRoute>} />
+        <Route path="/todo/create" element={ <ProtectedRoute> <ToDoCreate /> </ProtectedRoute>} />
+        <Route path="/todo/edit/:id" element={ <ProtectedRoute> <ToDoEdit /> </ProtectedRoute>} />
+
+       
       </Routes>
     </Router>
   );
