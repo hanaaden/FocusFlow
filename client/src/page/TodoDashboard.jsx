@@ -6,7 +6,7 @@ import "./Dashboard.css";
 const TodoDiv = () => {
   const [latestTodo, setLatestTodo] = useState(null);
   const [loading, setLoading] = useState(false);
-  const api = "http://localhost:5000"; // Replace with your backend URL
+  const api = "https://focusflow-red6.onrender.com"; // Replace with your backend URL
 
   useEffect(() => {
     axios
