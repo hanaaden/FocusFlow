@@ -63,7 +63,7 @@ const JournalCreate = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const api = "http://localhost:5000";
+  const api = "https://focusflow-red6.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
