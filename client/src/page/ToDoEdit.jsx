@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ToDoEdit.css";
 import Header from "./Header";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 const ToDoEdit = () => {
   const { id } = useParams();
