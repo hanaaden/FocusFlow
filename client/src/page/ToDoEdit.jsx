@@ -13,7 +13,7 @@ const ToDoEdit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/todos/${id}`, { withCredentials: true })
+      .get(`https://focusflow-red6.onrender.com/todos/${id}`, { withCredentials: true })
       .then((res) => {
         setTodo(res.data);
         setTitle(res.data.title);
@@ -46,14 +46,14 @@ const ToDoEdit = () => {
   const handleUpdate = () => {
     const updatedTodo = { ...todo, title };
     axios
-      .put(`http://localhost:5000/todos/${id}`, updatedTodo, { withCredentials: true })
+      .put(`https://focusflow-red6.onrender.com/todos/${id}`, updatedTodo, { withCredentials: true })
       .then(() => navigate("/todo"))
       .catch((err) => console.error("Update failed:", err));
   };
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:5000/todos/${id}`, { withCredentials: true })
+      .delete(`https://focusflow-red6.onrender.com/todos/${id}`, { withCredentials: true })
       .then(() => navigate("/todo"))
       .catch((err) => console.error("Delete failed:", err));
   };
