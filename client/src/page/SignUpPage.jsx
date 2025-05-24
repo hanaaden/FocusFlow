@@ -18,7 +18,7 @@ const SignUpPage = () => {
     }
     try {
 
-        const api = "http://localhost:5000" // Replace with your backend URL
+        const api = "https://focusflow-red6.onrender.com" // Replace with your backend URL
       const res = await axios.post(
         `${api}/register`,
         { username, email, password }
