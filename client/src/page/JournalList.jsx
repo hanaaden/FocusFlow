@@ -1,25 +1,3 @@
-// // src/page/JournalList.jsx
-// import React from "react";
-// import "./JournalList.css";
-// import { Link } from "react-router-dom";
-
-// const JournalList = () => {
-//   return (
-//     <div className="main-container">
-//       <h1 className="page-title">Your Journal Entries</h1>
-//       <ul className="list-section">
-//         <li><Link to="/journal/1">Apr 20 - Reflections</Link></li>
-//         <li><Link to="/journal/2">Apr 21 - Gratefulness</Link></li>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default JournalList;
-
-
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -29,7 +7,7 @@ import Header from "./Header";
 
 const JournalList = () => {
   const [journals, setJournals] = useState([]);
-  const api = "http://localhost:5000"; // Your backend URL
+  const api = "https://focusflow-red6.onrender.com"; // Your backend URL
 
   useEffect(() => {
     axios
