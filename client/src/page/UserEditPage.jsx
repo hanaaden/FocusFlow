@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './UserForm.css'; // Shared CSS file
-import Sidebar from './sidebar';
+import Sidebar from './Sidebar';
 import Header from './Header';
 
 function UserEditPage() {
