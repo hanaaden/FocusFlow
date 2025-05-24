@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import Header from "./Header";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 import TodoDiv from "./TodoDashboard";
 import JournalDashboard from "./JournalDashboard";
 const Dashboard = () => {
