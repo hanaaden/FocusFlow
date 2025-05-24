@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./JournalEdit.css";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 import Header from "./Header";
 
 const JournalEdit = () => {
