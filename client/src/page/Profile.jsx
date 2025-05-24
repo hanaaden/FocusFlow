@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Profile.css";
 import Header from "./Header";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
