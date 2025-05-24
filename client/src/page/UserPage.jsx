@@ -7,7 +7,7 @@ import Header from "./Header";
 
 export default function UsersPage() {
   const [users, setUsers] = useState([]);
-    const api = "http://localhost:5000"; // Replace with your backend URL
+    const api = "https://focusflow-red6.onrender.com"; // Replace with your backend URL
   const fetchUsers = async () => {
     try {
       const res = await axios.get(`${api}/users`);
