@@ -12,7 +12,7 @@ require('dotenv').config();
 
 // Middleware setup
 app.use(cors({
-    origin: 'https://focus-flow-p6eb0in23-hana-adens-projects.vercel.app',  // Replace with your frontend URL
+    origin: 'https://focus-flow-lac.vercel.app',  // Replace with your frontend URL
     methods: ['GET', 'POST','PUT','DELETE'],
     credentials: true,
 }));
